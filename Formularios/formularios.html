@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica de Formularios</title>
+</head>
+    <body>
+        <h1> Formularios </h1>
+        <a href="../indice.html"> Volver al indice </a>
+
+        <h2> Estructura Basica de un Formulario </h2>
+
+        <pre><code class="language-html">
+            &lt;form action="/ruta_servidor" method="POST"&gt; 
+                &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
+                &lt;input type="text" id="nombre" name="nombre" required&gt;
+                &lt;input type="submit" value="Enviar"&gt;
+            &lt;/form&gt;
+        </code></pre>
+
+        <form action="/ruta_servidor" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            
+            <input type="submit" value="Enviar">
+        </form>    
+     
+        <ul>
+            <li> <strong>action:</strong> Define la URL a la que se envía el formulario. </li>
+
+            <li> <strong>method:</strong>  Especifica el método HTTP para enviar los datos (GET o POST). </li>
+
+            <li> <strong>name:</strong> Asigna un nombre al campo para identificarlo en el servidor. </li>
+
+            <li> <strong>required:</strong> Indica que el campo es obligatorio. </li>
+        </ul>
+
+        <h2> Tipos de entradas (input) más comunes </h2>
+ 
+        <hr>
+        <h3> Texto (text) </h3>
+        <input type="text" name="nombre" placeholder="Ingresa tu nombre">
+        <pre><code class="language-html">
+            &lt;input type="text" name="nombre" placeholder="Ingresa tu nombre"&gt;
+        </code></pre>
+
+        <hr>
+        <h3>Contraseña (password)</h3>
+        <input type="password" name="clave" placeholder="Ingresa tu contraseña">
+        <pre><code class="language-html">
+            &lt;input type="password" name="clave" placeholder="Ingresa tu contraseña"&gt;
+        </code></pre>
+
+        <hr>
+        <h3>Correo electrónico (email)</h3>
+        <input type="email" name="correo" placeholder="Ingresa tu correo" required>
+        <pre><code class="language-html">
+            &lt;input type="email" name="correo" placeholder="Ingresa tu correo" required&gt;
+        </code></pre>
+
+        <hr>
+        <h3>Número (number)</h3>
+        <input type="number" name="edad" min="1" max="100">
+        <pre><code class="language-html">
+            &lt;input type="number" name="edad" min="1" max="100"&gt;
+        </code></pre>
+
+        <hr>
+        <h3> Fecha (date)</h3>
+        <input type="date" name="fecha_nacimiento">
+        <pre><code class="language-html">
+            &lt;input type="date" name="fecha_nacimiento"&gt;
+        </code></pre>
+
+        <hr>
+        <h3>Selector de archivos (file)</h3>
+        <input type="file" name="archivo">
+        <pre><code class="language-html">
+            &lt;input type="file" name="archivo"&gt;
+        </code></pre>
+
+        <hr>
+        <h3>Casilla de verificación (checkbox)</h3>
+        <input type="checkbox" name="acepto" value="si" required> Acepto los términos
+        <pre><code class="language-html">
+            &lt;input type="checkbox" name="acepto" value="si" required&gt; Acepto los términos
+        </code></pre>
+
+        <hr>
+        <h3>Botón de radio (radio)</h3>
+        <input type="radio" name="genero" value="masculino"> Masculino
+        <input type="radio" name="genero" value="femenino"> Femenino
+        <pre><code class="language-html">
+            &lt;input type="radio" name="genero" value="masculino"&gt; Masculino
+            &lt;input type="radio" name="genero" value="femenino"&gt; Femenino
+        </code></pre>
+
+        <hr>
+        <h3>Botón de envío (submit)</h3>
+        <input type="submit" value="Enviar">
+        <pre><code class="language-html">
+            &lt;input type="submit" value="Enviar"&gt;
+        </code></pre>
+
+        <h2> Elementos avanzados </h2>
+
+        <h3>Área de texto (textarea)</h3>
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="4" cols="50"></textarea>
+        <pre><code class="language-html">
+            &lt;label for="mensaje"&gt; Mensaje: &lt;/label&gt;
+            &lt;textarea id="mensaje" name="mensaje" rows="4" cols="50"&gt; &lt;/textarea&gt;
+        </code></pre>
+
+        <hr>
+        <h3>Selector desplegable (select)</h3>
+        <label for="pais">País:</label>
+        <select id="pais" name="pais">
+            <option value="argentina">Argentina</option>
+            <option value="mexico">México</option>
+            <option value="espana">España</option>
+        </select>
+<pre><code class="language-html">
+    &lt;label for="pais"&gt; País: &lt;/label&gt;
+    &lt;select id="pais" name="pais"&gt;
+        &lt;option value="argentina"&gt; Argentina &lt;/option&gt;
+        &lt;option value="mexico"&gt; México &lt;/option&gt;
+        &lt;option value="espana"&gt; España &lt;/option&gt;
+    &lt;/select&gt;
+</code></pre>
+
+        <hr>
+        <h3>Botón (button)</h3>
+        <button type="submit">Enviar</button>
+        <pre><code class="language-html">
+            &lt;button type="submit"&gt; Enviar &lt;/button&gt;
+        </code></pre>
+
+        <h2> Atributos comunes de formularios </h2>
+        <ol>
+            <li><strong>placeholder:</strong> Muestra un texto de ejemplo dentro del campo.</li>
+            <li><strong>value:</strong> Especifica el valor inicial del campo.</li>
+            <li><strong>readonly:</strong> Hace el campo de solo lectura.</li>
+            <li><strong>disabled:</strong> Desactiva el campo.</li>
+            <li><strong>autocomplete:</strong> Controla si el navegador sugiere autocompletado.</li>
+            <li><strong>maxlength:</strong> Establece el número máximo de caracteres permitidos.</li>
+        </ol>
+
+        <h2>Ejemplo completo</h2>
+        <form action="/registrar" method="POST">
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre" required><br>
+          
+            <label for="correo">Correo:</label><br>
+            <input type="email" id="correo" name="correo" required><br>
+          
+            <label for="edad">Edad:</label><br>
+            <input type="number" id="edad" name="edad" min="18" max="100" required><br>
+          
+            <label for="pais">País:</label><br>
+            <select id="pais" name="pais" required>
+              <option value="">Selecciona un país</option>
+              <option value="argentina">Argentina</option>
+              <option value="mexico">México</option>
+              <option value="espana">España</option>
+            </select><br>
+          
+            <label>
+              <input type="checkbox" name="terminos" required> Acepto los términos y condiciones
+            </label><br>
+          
+            <input type="submit" value="Registrar">
+        </form>
+
+    </body>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</html>

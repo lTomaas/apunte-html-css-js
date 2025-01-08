@@ -1,0 +1,204 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+}
+
+nav.principal-nav ul {
+    text-align: center;
+    list-style: none;
+    padding: 0;
+}
+
+nav.principal-nav ul li {
+    display: inline-flex;  /* Los pone uno al lado del otro */
+    margin-right: 15px;
+}
+
+nav.principal-nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav.principal-nav ul li a:hover{
+    color: rgba(162, 197, 105, 0.747);
+}
+
+nav.styled-nav {
+    display: flex; /* Activa el modelo flexible */
+    justify-content: space-around; /* Espaciado equitativo entre elementos */
+    align-items: center; /* Alinea verticalmente los elementos */
+    background-color: #333;
+    padding: 10px 0px;
+}
+
+nav.styled-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 15px;
+}
+
+nav.styled-nav a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+
+main {
+    padding: 20px;
+}
+
+
+button {
+    background-color: #008cba;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005f7a;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 20px;
+    background: #333;
+    color: white;
+}
+
+article{
+    border-top: 1px solid black;
+    padding: 10px 0px;
+}
+
+
+.styled-image {
+    width: 300px; /* Ajusta el ancho */
+    height: auto; /* Mantén la proporción */
+    border: 10px solid rgb(196, 61, 61); /* Borde alrededor de la imagen */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 10px 10px 10px rgb(66, 20, 20); /* Sombra */
+}
+
+.styled-list li {
+    list-style: none;              /* Elimina la viñeta por defecto */
+    background: url('./imagenes/gato-negro.png') no-repeat left center;
+    background-size: 30px 30px;    /* Ajusta el tamaño del ícono */
+    padding: 10px 40px;
+}
+
+#audio-toggle {
+    background: black;
+    border: none;
+    cursor: pointer;
+    font-size: 40px;
+    color: #007bff;
+    width: 78px;
+    padding: 0px;
+}
+
+table.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+table.styled-table th, table.styled-table td {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+}
+
+table.styled-table th {
+    background-color: #333;
+    color: white;
+}
+
+table.styled-table tr:nth-child(even) {
+    background-color: #f3f3f3;
+}
+
+
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Hace la imagen redonda */
+    border: 5px solid #4caf50; /* Borde alrededor de la imagen */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    object-fit: cover; /* Asegura que la imagen llene el contenedor redondeado */
+}
+
+#fileInput {
+    display: none; /* Oculta el input de archivo */
+}
+
+.upload-label {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    width: 150px;
+}
+
+.upload-label:hover {
+    background-color: #45a049;
+}
+
+.boxes{
+    background-color: crimson;
+}
+
+.box1 {
+    background-color: lightblue;
+    border-width: 2px;
+    border-color: orange;
+    border-style: solid;
+    padding: 20px; /* Espacio interno de 20px */
+    margin: 10px;  /* Espacio externo de 10px */
+}
+
+.box2 {
+    background-color: lightgreen;
+    padding: 10px;
+    margin: 20px;
+}
+
+.ejemplo-padding-margin{
+    margin: 20px;
+    padding: 20px;
+    background-color: yellow;
+    border-width: 5px;
+    border-color: black;
+    border-style: solid;
+    width: 500px;
+}

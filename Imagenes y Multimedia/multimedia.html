@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica de Imagenes y Multimedia</title>
+</head>
+    <body>
+        <h1> Imagenes y Multimedia</h1>
+        <a href="../indice.html"> Volver al indice </a>
+        
+        <h2>Imágenes en HTML</h2>
+        <h3>Sintaxis Básica</h3>
+        <pre><code class="language-html">
+            &lt;img src="ruta_de_imagen" alt="descripción de la imagen" title="titulo de la imagen"&gt;
+        </code></pre>
+
+        <ul>
+            <li><strong>src:</strong> Especifica la fuente o ruta del archivo de imagen. Puede ser una ruta relativa o absoluta. Por ejemplo:
+                <ul>
+                    <li><strong>Ruta relativa:</strong>"imagenes/foto.jpg"</li>
+                    <li><strong>Ruta absoluta:</strong>"https://www.ejemplo.com/imagenes/foto.jpg"</li>
+                </ul>
+            </li>
+            <li><strong>alt:</strong> Proporciona una descripción alternativa de la imagen. Es importante para accesibilidad y SEO. Si la imagen no se carga, el texto alternativo será visible.</li>
+            <li><strong>title:</strong> Proporciona un texto emergente cuando el usuario pasa el cursor sobre la imagen.</li>
+        </ul>
+
+        <h2>Multimedia en HTML</h2>
+
+        <h3>Audio</h3>
+        <p>La etiqueta <strong>&lt;audio&gt;</strong> permite incluir archivos de audio en una página web.
+        Se puede usar con el atributo <strong>controls</strong> para proporcionar controles básicos de reproducción.
+        </p>
+
+        <audio controls>
+            <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mp3">
+            Tu navegador no soporta la etiqueta de audio.
+        </audio>
+        <pre><code class="language-html">
+            &lt;audio controls&gt;
+                &lt;source src="https://www.w3schools.com/html/horse.mp3" type="audio/mp3"&gt;
+                Tu navegador no soporta la etiqueta de audio.
+            &lt;/audio&gt;
+        </code></pre>
+
+        <ul>
+            <li><b>type:</b> Especifica el tipo MIME del archivo, como audio/mp3, audio/ogg, etc.</li>
+            <li><b>controls:</b> Muestra los controles básicos de reproducción como play, pause, volumen, etc.</li>
+            <li><b>autoplay:</b> Hace que el audio se reproduzca automáticamente cuando la página se carga.</li>
+            <li><b>loop:</b> Hace que el audio se repita infinitamente.</li>
+            <li><b>muted:</b> Mutea el audio al inicio.</li>
+        </ul>
+
+        <h3>Video</h3>
+        <p>La etiqueta <b>&lt;video&gt;</b> permite incluir archivos de video en una página web.
+        Al igual que con el audio, puedes usar el atributo <b>controls</b> para mostrar los controles de reproducción.
+        </p>
+
+        <video controls width="600">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+
+        <pre><code class="language-html">
+            &lt;video controls width="600"&gt;
+                &lt;source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"&gt;
+                Tu navegador no soporta la etiqueta de video.
+            &lt;/video&gt;
+        </code></pre>
+
+        <ul>
+            <li><b>type:</b> Especifica el tipo MIME del archivo, como video/mp3, video/ogg, etc.</li>
+            <li><b>controls:</b> Muestra los controles básicos de reproducción como play, pause, volumen, etc.</li>
+            <li><b>autoplay:</b> Reproduce el video automáticamente cuando la página se carga.</li>
+            <li><b>loop:</b> Hace que el video se repita infinitamente.</li>
+            <li><b>muted:</b> Mutea el video.</li>
+            <li><b>poster:</b> Muestra una imagen previa al video mientras se carga o antes de iniciar la reproducción.</li>
+        </ul>
+
+        <h3>Videos de youtube</h3>
+        <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"> </iframe>
+        <pre><code class="language-html">
+            &lt;iframe src="link_al_video"&gt; &lt;/iframe&gt;
+        </code></pre>
+
+    </body>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</html>

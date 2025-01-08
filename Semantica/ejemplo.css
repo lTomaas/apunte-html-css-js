@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+header {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: black;
+}
+
+header h1 {
+    color: white;
+    align-self: flex-end;
+}
+
+header nav ul{
+    display: flex;
+}
+
+header nav ul li {
+    list-style: none;
+    padding: 0.5rem;
+}
+
+header nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    padding: 1rem;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+
+.contenedor-principal {
+    display: flex;
+    flex-direction: column
+}
+
+.contenedor-secciones{
+    flex-grow: 1;
+}
+
+.contenedor-secciones section{
+    border-bottom: solid 2px black;
+}

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica de Javascript</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <div class="header-logo">
+            <h1 class="nombre-pagina"> Javascript </h1>
+            <div class="contenedor-logo">
+                <img src="./assets/logo-js.png" alt="Logo de la pagina">
+            </div>
+        </div>
+        <nav>
+            <ol>
+                <li><a href="../indice.html">Volver al indice</a></li>
+                <li><a href="#variables-y-datos">Variables y tipos de datos</a></li>
+                <li><a href="#operadores">Operadores</a></li>
+                <li><a href="#estructuras-control">Estructuras de Control</a></li>
+                <li><a href="#funciones">Funciones</a></li>
+                <li><a href="#objetos">Objetos</a></li>
+                <li><a href="#arrays">Arrays</a></li>
+                <li><a href="#manipulacion-dom">Manipulacion del DOM</a></li>
+            </ol>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-seccion">
+            <div class="hero-contenedor" id="variables-y-datos">
+                <h1>Variables y tipos de datos</h1>
+            </div>
+            <div class="hero-texto">
+                <h1>Variables</h1>
+                    <ol class="styled-list">
+                        <li><span class="texto-importante-lista texto-lista">var</span> <p class="texto-lista">Declaración global o de función (no recomendada debido a problemas de alcance).</p></li>
+                        <li><span class="texto-importante-lista texto-lista">let</span> <p class="texto-lista">Declaración de bloque (recomendada para variables que pueden cambiar).</p></li>
+                        <li><span class="texto-importante-lista texto-lista">const</span> <p class="texto-lista">Declaración de bloque para valores constantes (recomendada para valores que no cambian).</p></li>
+                    </ol>
+<pre><code class="language-javascript">
+let nombre = "Juan"; 
+const PI = 3.14; 
+var edad = 25; 
+</code></pre>
+            </div>
+
+            <div class="hero-texto">
+                <h1>Tipos de Datos Primitivos</h1>
+                <nav>
+                    <ol class="styled-list">
+                        <li><span class="texto-importante-lista texto-lista">String</span>
+                            <p class="texto-lista">Cadena de texto.
+                                <br> Ej: <span style="font-weight: bold;">"Hola"</span>, <span style="font-weight: bold;">"Mundo"</span>
+                            </p>
+                        </li>
+                        <li><span class="texto-importante-lista texto-lista">Number</span> 
+                            <p texto-lista>Números (enteros y decimales).
+                                <br> Ej: <span style="font-weight: bold;">42</span>, <span style="font-weight: bold;">3.14</span>
+                            </p>
+                        </li>
+                        <li><span class="texto-importante-lista texto-lista">Boolean</span> 
+                            <p>Verdadero o falso.
+                                <br> Ej: <span style="font-weight: bold;">true</span>, <span style="font-weight: bold;">false</span>
+                            </p>
+                        </li>
+                        <li><span class="texto-importante-lista texto-lista">Undefined</span> 
+                            <p class="texto-lista">Variable declarada pero sin valor asignado.</p>
+                        </li>
+                        <li><span class="texto-importante-lista texto-lista">Null</span> 
+                            <p class="texto-lista">Valor intencionalmente vacío.</p>
+                        </li>
+                        <li><span class="texto-importante-lista texto-lista">Symbol</span> 
+                            <p>Identificador único e inmutable.</p>
+                        </li>
+                        <li><span class="texto-importante-lista texto-lista">BigInt</span> 
+                            <p class="texto-lista">Enteros mayores que <span  style="font-weight: bold;">2^53 - 1.</span></p>
+                        </li>
+                        
+                    </ol>
+                </nav>
+            </div>
+        </section>
+
+        <section class="hero-seccion" id="operadores">
+            <div class="hero-contenedor">
+                <h1>Operadores</h1>
+            </div>
+            <div class="hero-texto">
+                <h1>Aritméticos</h1>
+                <nav>
+                    <ol class="styled-list">
+                        <li><span class="texto-importante-lista texto-lista">Suma</span> <p class="texto-lista">+</p> </li>
+                        <li><span class="texto-importante-lista texto-lista">Resta</span> <p class="texto-lista"><b>-</b></p> </li>
+                        <li><span class="texto-importante-lista texto-lista">Multiplicacion</span> <p class="texto-lista"><b>*</b></p> </li>
+                        <li><span class="texto-importante-lista texto-lista">Division</span> <p class="texto-lista"><b>/</b></p> </li>
+                        <li><span class="texto-importante-lista texto-lista">Módulo (resto de división)</span> <p class="texto-lista"><b>%</b></p> </li>
+                        <li><span class="texto-importante-lista texto-lista">Exponenciación</span> <p class="texto-lista"><b>**</b></p> </li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="hero-texto">
+                <h1>Comparación</h1>
+                <nav>
+                    <ol class="styled-list">
+                        <li><span class="texto-importante-lista texto-lista">Igualdad</span> <p class="texto-lista"><b>==</b></p> </li>
+                        <li><span class="texto-importante-lista texto-lista">Igualdad estrictura</span> <p class="texto-lista"><b>===</b></p> </li>
+                        <li><span class="texto-importante-lista texto-lista">Desigualdad</span> <p class="texto-lista"><b>!=</b></p> </li>
+                        <li><span class="texto-importante-lista texto-lista">Desigualdad estricta</span> <p class="texto-lista"><b>!==</b></p> </li>
+                        <li><span class="texto-importante-lista texto-lista">Mayor que (resto de división)</span> <p class="texto-lista"><b>></b></p> </li>
+                        <li><span class="texto-importante-lista texto-lista">Menor que</span> <p class="texto-lista"><b><</b></p> </li>
+                        <li><span class="texto-importante-lista texto-lista">Mayor o igual</span> <p class="texto-lista"><b>>=</b></p> </li>
+                        <li><span class="texto-importante-lista texto-lista">Menor o igual</span> <p class="texto-lista"><b><=</b></p> </li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="hero-texto">
+                <h1>Lógicos</h1>
+                <nav>
+                    <ol class="styled-list">
+                        <li><span class="texto-importante-lista texto-lista">AND&nbsp;(&&)</span> 
+                            <p class="texto-lista">
+                                Devuelve <b>true</b> si ambos operandos son verdaderos.
+                            </p>
+                        </li>
+                        <li><span class="texto-importante-lista texto-lista">OR&nbsp;(||)</span>
+                            <p class="texto-lista">
+                                Devuelve <b>true</b> si al menos uno de los operandos es verdadero.
+                            </p>
+                        </li>
+                        <li><span class="texto-importante-lista texto-lista">NOT&nbsp;(!)</span> 
+                            <p class="texto-lista">
+                                Invierte el valor lógico de un operando.
+                            </p>
+                        </li>
+                    </ol>
+                </nav>
+
+            </div>
+        </section>
+
+        <section class="hero-seccion" id="estructuras-control">
+            <div class="hero-contenedor">
+                <h1>Estructuras de Control</h1>
+            </div>
+            <div class="hero-texto">
+                <h1>Condicionales</h1>
+<pre><code class="language-javascript">
+if (condicion) {
+    // Código si la condición es verdadera
+} else if (otraCondicion) {
+    // Código si la otra condición es verdadera
+} else {
+    // Código si ninguna condición se cumple
+}    
+</code></pre>
+            </div>
+
+            <div class="hero-texto">
+                <h1>Switch</h1>
+<pre><code class="language-javascript">
+switch (expresion) {
+case valor1:
+    // Código
+    break;
+case valor2:
+    // Código
+    break;
+default:
+    // Código por defecto
+}
+</code></pre>
+            </div>
+
+            <div class="hero-texto">
+                <h1>Bucles</h1>
+                <ol class="styled-list">
+                    <li><span class="texto-importante-lista texto-lista">for</span> <p class="texto-lista">Repite un bloque de código un número determinado de veces. </p></li>
+                        <p class="codigo">
+                            <pre><code class="language-javascript">
+for (let i = 0; i < 10; i++) {
+    console.log(i);
+}
+                            </code></pre>
+                        </p>
+                    <li><span class="texto-importante-lista texto-lista">while</span> <p class="texto-lista">Repite un bloque de código mientras se cumpla una condición.</p></li>
+
+                        <p class="codigo">
+                            <pre><code class="language-javascript">
+let i = 0;
+while (i < 10) {
+    console.log(i);
+    i++;
+}
+                            </code></pre>
+                        </p>
+                    <li><span class="texto-importante-lista texto-lista">do...while</span> <p class="texto-lista">Similar a while, pero siempre ejecuta el bloque al menos una vez. </p></li>
+                        <p class="codigo">
+                            <pre><code class="language-javascript">
+let i = 0;
+do {
+    console.log(i);
+    i++;
+} while (i < 10);
+                            </code></pre>
+                        </p>
+                    <li><span class="texto-importante-lista texto-lista">for...of</span> <p class="texto-lista">Itera sobre elementos de un iterable (arrays, strings, etc.).</p></li>
+                        <p class="codigo">
+                            <pre><code class="language-javascript">
+for (let valor of array) {
+    console.log(valor);
+}
+                            </code></pre>
+                        </p>
+                    <li><span class="texto-importante-lista texto-lista">for...in</span> <p class="texto-lista">Itera sobre las propiedades de un objeto.</p></li>
+                        <p class="codigo">
+                            <pre><code class="language-javascript">
+for (let propiedad in objeto) {
+    console.log(propiedad);
+}
+                            </code></pre>
+                        </p>
+                </ol>
+            </div>
+        </section>
+
+        <section class="hero-seccion" id="funciones">
+            <div class="hero-contenedor">
+                <h1>Funciones</h1>
+            </div>
+            <div class="hero-texto">
+                <h1>Declaración de Funciones</h1>
+                <p class="hero-texto-informativo">
+                    Este es el modo clásico de definir una función.
+                    Se puede invocar antes o después de ser definida
+                    gracias al hoisting (las funciones declaradas se elevan al inicio del ámbito).
+                </p>
+<pre><code class="language-javascript">
+function saludar() {
+    console.log("Hola");
+}
+saludar(); // Llama a la función y muestra "Hola"
+</code></pre>
+                <nav>
+                    <ol class="styled-list">
+                        <li><span class="texto-importante-lista texto-lista">¿Qué&nbsp;hace?</span><p class="texto-lista">Imprime un saludo en la consola cada vez que se invoca.</p></li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="hero-texto">
+                <h1>Funciones anónimas</h1>
+                <p class="hero-texto-informativo">
+                    Son funciones que no tienen nombre y se suelen asignar a una variable. No pueden ser invocadas antes de su definición.
+                </p>
+<pre><code class="language-javascript">
+const sumar = function (a, b) {
+    return a + b;
+};
+console.log(sumar(5, 3)); // Devuelve 8
+</code></pre>
+                <nav>
+                    <ol class="styled-list">
+                        <li><span class="texto-importante-lista texto-lista">¿Qué&nbsp;hace?</span><p class="texto-lista"></p>Recibe dos números y devuelve su suma.</p></li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="hero-texto">
+                <h1>Arrow functions (funciones de flecha)</h1>
+                <p class="hero-texto-informativo">
+                    Introducidas en ES6, son una forma más compacta de escribir funciones. No tienen su propio this, lo que las hace ideales para callbacks.
+                </p>
+<pre><code class="language-javascript">
+const multiplicar = (a, b) => a * b;
+console.log(multiplicar(4, 5)); // Devuelve 20
+</code></pre>
+                <nav>
+                    <ol class="styled-list">
+                        <li><span class="texto-importante-lista texto-lista">¿Qué&nbsp;hace?</span><p class="texto-lista">Recibe dos números y devuelve su producto.</p></li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="hero-texto">
+                <h1>Funciones con parámetros predeterminados</h1>
+                <p class="hero-texto-informativo">
+                    Permiten definir valores predeterminados para los parámetros, que se usan si no se proporciona un valor al invocar la función.
+                </p>
+<pre><code class="language-javascript">
+function saludar(nombre = "Amigo") {
+    console.log(`Hola, ${nombre}`);
+}
+saludar();           // Muestra "Hola, Amigo"
+saludar("Carlos");   // Muestra "Hola, Carlos"
+</code></pre>
+                <ol class="styled-list">
+                    <li><span class="texto-importante-lista texto-lista">¿Qué&nbsp;hace?</span><p class="texto-lista">Imprime un saludo personalizado. Si no se pasa un nombre, usa "Amigo" como valor predeterminado.</p></li>
+                </ol>
+            </div>
+
+            <div class="hero-texto">
+                <h1>Funciones de orden superior</h1>
+                <p class="hero-texto-informativo">
+                    Son funciones que pueden recibir otras funciones como parámetros o devolverlas como resultado. Son clave en la programación funcional.
+                </p>
+<pre><code class="language-javascript">
+function procesarArray(arr, callback) {
+    const resultado = [];
+    for (let i = 0; i < arr.length; i++) {
+        resultado.push(callback(arr[i]));
+    }
+    return resultado;
+}
+const duplicar = (n) => n * 2;
+console.log(procesarArray([1, 2, 3], duplicar)); // Devuelve [2, 4, 6]
+</code></pre>
+
+                <ol class="styled-list">
+                    <li><span class="texto-importante-lista texto-lista">¿Qué&nbsp;hace?</span><p class="texto-lista">Recibe un array y una función (callback), aplica la función a cada elemento del array y devuelve un nuevo array con los resultados.</p></li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="hero-seccion" id="objetos">
+            <div class="hero-contenedor">
+                <h1>Objetos</h1>
+            </div>
+            <div class="hero-texto">
+                <ol class="styled-list">
+                    <li><span class="texto-importante-lista texto-lista">Objetos&nbsp;literales</span></li>
+                </ol>
+<pre><code class="language-javascript">
+let coche = {
+    marca: "Toyota",
+    modelo: "Corolla",
+    arrancar: function () {
+        console.log("Coche encendido");
+    }
+};
+</code></pre>
+            </div>
+
+            <div class="hero-texto">
+                <ol class="styled-list">
+                    <li><span class="texto-importante-lista texto-lista">Clases&nbsp;y&nbsp;herencia</span></li>
+                </ol>
+<pre><code class="language-javascript">
+class Persona {
+    constructor(nombre, edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+    
+    saludar() {
+        console.log(`Hola, soy ${this.nombre}`);
+    }
+}
+    
+class Estudiante extends Persona {
+    constructor(nombre, edad, carrera) {
+        super(nombre, edad);
+        this.carrera = carrera;
+    }
+}
+</code></pre>
+            </div>
+        </section>
+
+        <section class="hero-seccion" id="manipulacion-dom">
+            <div class="hero-contenedor">
+                <h1>Manipulacion del DOM</h1>
+            </div>
+            <div class="hero-texto">
+                <h1>Métodos principales de Seleccion</h1>
+                <ol class="styled-list">
+                    <li>
+                        <span class="texto-importante-lista texto-lista">getElementById</span><p class="texto-lista">Selecciona un elemento por su id.</p>
+                    </li>
+<pre><code class="language-javascript">
+const titulo = document.getElementById("miTitulo");
+console.log(titulo.innerText);
+</code></pre>
+                    <li>
+                        <span class="texto-importante-lista texto-lista">getElementsByClassName</span><p class="texto-lista">Devuelve una colección de elementos con una clase específica.</p>
+                    </li>
+<pre><code class="language-javascript">
+const items = document.getElementsByClassName("item");
+console.log(items[0]); // Primer elemento con clase "item"
+</code></pre>
+                    <li>
+                        <span class="texto-importante-lista texto-lista">getElementsByTagName</span><p class="texto-lista">Devuelve una colección de elementos con una etiqueta específica.</p>
+                    </li>
+<pre><code class="language-javascript">
+const divs = document.getElementsByTagName("div");
+console.log(divs.length); // Número de divs en el documento    
+</code></pre>
+                    <li>
+                        <span class="texto-importante-lista texto-lista">querySelector</span><p class="texto-lista">Selecciona el primer elemento que coincida con un selector CSS.</p>
+                    </li>
+<pre><code class="language-javascript">
+const primerParrafo = document.querySelector("p");
+</code></pre>
+                    <li>
+                        <span class="texto-importante-lista texto-lista">querySelectorAll</span><p class="texto-lista">Devuelve todos los elementos que coinciden con un selector CSS.</p>
+                    </li>
+<pre><code class="language-javascript">
+const enlaces = document.querySelectorAll("a");
+enlaces.forEach((enlace) => console.log(enlace.href));    
+</code></pre>
+                </ol>
+            </div>
+
+            <div class="hero-texto">
+                <h1>Modificar el contenido de los elementos</h1>
+                <ol class="styled-list">
+                    <li>
+                        <span class="texto-importante-lista texto-lista">innerText</span><p class="texto-lista">Cambia el texto que se muestra dentro de un elemento.</p>
+                    </li>
+<pre><code class="language-javascript">
+const titulo = document.getElementById("miTitulo");
+titulo.innerText = "Nuevo Título";
+</code></pre>
+                    <li>
+                        <span class="texto-importante-lista texto-lista">innerHTML </span><p class="texto-lista">Cambia el contenido HTML dentro de un elemento.</p>
+                    </li>
+<pre><code class="language-javascript">
+const contenedor = document.querySelector(".contenedor");
+contenedor.innerHTML = "<p>Este es un nuevo párrafo</p>";
+</code></pre>
+                    <li>
+                        <span class="texto-importante-lista texto-lista">textContent </span><p class="texto-lista">Similar a innerText, pero incluye todo el contenido del nodo, incluso si está oculto mediante CSS.</p>
+                    </li>
+<pre><code class="language-javascript">
+console.log(titulo.textContent);
+</code></pre>
+                </ol>
+            </div>
+
+            <div class="hero-texto">
+                <h1>Modificar atributos</h1>
+                <ol class="styled-list">
+                    <li>
+                        <span class="texto-importante-lista texto-lista">setAttribute</span><p class="texto-lista">Añade o modifica un atributo de un elemento.</p>
+                    </li>
+<pre><code class="language-javascript">
+const enlace = document.querySelector("a");
+enlace.setAttribute("href", "https://www.ejemplo.com");
+</code></pre>
+                    <li>
+                        <span class="texto-importante-lista texto-lista">getAttribute</span><p class="texto-lista">Obtiene el valor de un atributo de un elemento.</p>
+                    </li>
+<pre><code class="language-javascript">
+console.log(enlace.getAttribute("href"));
+</code></pre>
+                    <li>
+                        <span class="texto-importante-lista texto-lista">removeAttribute</span><p class="texto-lista">Elimina un atributo de un elemento.</p>
+                    </li>
+<pre><code class="language-javascript">
+enlace.removeAttribute("target");
+</code></pre>
+                    <li>
+                        <span class="texto-importante-lista texto-lista">Atributos&nbsp;directos</span><p class="texto-lista">Algunos atributos se pueden modificar directamente a través de propiedades.</p>
+                    </li>
+<pre><code class="language-javascript">
+const imagen = document.querySelector("img");
+imagen.src = "nueva-imagen.png";
+imagen.alt = "Descripción de la nueva imagen";    
+</code></pre>
+
+                </ol>
+            </div>
+
+            <div class="hero-texto">
+                <h1>Estilos en línea</h1>
+                <ol class="styled-list">
+                    <li>
+                        <span class="texto-importante-lista texto-lista">Modificar estilos directamente</span><p class="texto-lista">
+                    </li>
+<pre><code class="language-javascript">
+const caja = document.querySelector(".caja");
+caja.style.backgroundColor = "blue";
+caja.style.padding = "20px";
+</code></pre>
+                    <li>
+                        <span class="texto-importante-lista texto-lista">Obtener el valor de un estilo computado</span>
+                    </li>
+<pre><code class="language-javascript">
+const estilo = window.getComputedStyle(caja);
+console.log(estilo.margin); // Muestra el margen aplicado    
+</code></pre>
+                </ol>
+            </div>
+
+            <div class="hero-texto">
+                <h1>Clases de los elementos</h1>
+                <ol class="styled-list">
+                    <li>
+                        <span class="texto-importante-lista texto-lista">classList.add</span><p class="texto-lista"><p class="texto-lista">Añade una o más clases a un elemento.</p>
+                    </li>
+<pre><code class="language-javascript">
+const caja = document.querySelector(".caja");
+caja.classList.add("nueva-clase");
+</code></pre>
+                    <li>
+                        <span class="texto-importante-lista texto-lista">classList.remove</span><p class="texto-lista">Elimina una o más clases de un elemento.</p>
+                    </li>
+<pre><code class="language-javascript">
+const caja = document.querySelector(".caja");
+caja.classList.remove("nueva-clase");
+</code></pre>
+
+                    <li>
+                        <span class="texto-importante-lista texto-lista">classList.toggle</span><p class="texto-lista">Añade la clase si no existe y la elimina si ya existe.</p>
+                    </li>
+<pre><code class="language-javascript">
+const caja = document.querySelector(".caja");
+caja.classList.toggle("oculto");
+</code></pre>
+
+                    <li>
+                        <span class="texto-importante-lista texto-lista">classList.contains</span><p class="texto-lista">Comprueba si el elemento tiene una clase específica.</p>
+                    </li>
+<pre><code class="language-javascript">
+const caja = document.querySelector(".caja");
+if (caja.classList.contains("nueva-clase")) {
+    console.log("La clase está presente");
+}
+</code></pre>
+                </ol>
+            </div>
+
+            <div class="hero-texto">
+                <h1>Eventos</h1>
+                <p class="hero-texto-informativo">Los eventos permiten ejecutar funciones cuando el usuario interactúa con la página (hace clic, pasa el ratón, escribe, etc.).</p>
+                <ol class="styled-list">
+                    <li>
+                        <span class="texto-importante-lista texto-lista">addEventListener</span><p class="texto-lista">Se usa para asociar un evento a un elemento.</p>
+                    </li>
+<pre><code class="language-javascript">
+const boton = document.querySelector("#miBoton");
+boton.addEventListener("click", () => {
+    console.log("Botón presionado");
+});
+</code></pre>
+                </ol>
+
+                <h1>Eventos comunes</h1>
+                <ol class="styled-list">
+                    <li>
+                        <span class="texto-importante-lista texto-lista">click</span><p class="texto-lista">Cuando el usuario hace clic en un elemento.</p>
+                    </li>
+                    <li>
+                        <span class="texto-importante-lista texto-lista">mouseover</span><p class="texto-lista">Cuando el usuario pasa el puntero del ratón por encima de un elemento.</p>
+                    </li>
+                    <li>
+                        <span class="texto-importante-lista texto-lista">keydown</span><p class="texto-lista">Cuando el usuario presiona una tecla.</p>
+                    </li>
+                    <li>
+                        <span class="texto-importante-lista texto-lista">submit</span><p class="texto-lista">Cuando se envía un formulario.</p>
+                    </li>
+                </ol>
+
+                <h1>Eliminar eventos</h1>
+<pre><code class="language-javascript">
+function manejarClick() {
+    console.log("Botón presionado");
+}
+boton.addEventListener("click", manejarClick);
+boton.removeEventListener("click", manejarClick);
+</code></pre>
+
+            </div>
+
+            <div class="hero-texto">
+                <h1>Crear y añadir elementos al DOM</h1>
+                <ol class="styled-list">
+                    <li>
+                        <span class="texto-importante-lista texto-lista">createElement</span><p class="texto-lista">Crea un nuevo elemento HTML.</p>
+                    </li>
+<pre><code class="language-javascript">
+const nuevoParrafo = document.createElement("p");
+nuevoParrafo.innerText = "Este es un párrafo nuevo";
+</code></pre>
+                    <li>
+                        <span class="texto-importante-lista texto-lista">appendChild</span><p class="texto-lista">Añade un nuevo elemento como hijo de un elemento existente.</p>
+                    </li>
+<pre><code class="language-javascript">
+const contenedor = document.querySelector(".contenedor");
+contenedor.appendChild(nuevoParrafo);
+</code></pre>
+
+                    <li>
+                        <span class="texto-importante-lista texto-lista">removeChild</span><p class="texto-lista">Elimina un elemento hijo de un contenedor.</p>
+                    </li>
+<pre><code class="language-javascript">
+contenedor.removeChild(nuevoParrafo);
+</code></pre>
+
+                    <li>
+                        <span class="texto-importante-lista texto-lista">insertBefore</span><p class="texto-lista"> Inserta un elemento antes de otro elemento hijo.</p>
+                    </li>
+<pre><code class="language-javascript">
+const primerHijo = contenedor.firstChild;
+contenedor.insertBefore(nuevoParrafo, primerHijo);
+</code></pre>
+ 
+                </ol>
+            </div>
+
+            <div class="hero-texto">
+                <h1>Fragmentos del DOM</h1>
+                <p class="hero-texto-informativo"> Un <b>DocumentFragment</b> es un contenedor especial que permite agrupar varios nodos antes de insertarlos en el DOM, lo que mejora el rendimiento.</p>
+<pre><code class="language-javascript">
+const fragmento = document.createDocumentFragment();
+
+for (let i = 0; i < 5; i++) {
+    const item = document.createElement("li");
+    item.textContent = `Elemento ${i + 1}`;
+    fragmento.appendChild(item);
+}
+
+document.querySelector("ul").appendChild(fragmento);
+</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="derechos">&copy; 2025 Guía Javascript. Todos los derechos reservados.</p>
+        <span class="contacto">
+            <span><a class="icono-contacto linkedin-icon" href="#linkedin"></a></span>
+            <span><a class="icono-contacto github-icon" href="#github"></a></span>
+            <span><a class="icono-contacto instagram-icon" href="#instagram"></a></span>
+        </span>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica de Flexbox</title>
+    <link rel="stylesheet" href="flexbox.css">
+</head>
+<body>
+
+    <nav class="menu-nav">
+        <ol class="menu-ol">
+            <li><a href="../indice.html">Volver al inicio</a></li>
+            <li><a href="#menu2">Ejemplo de Diseño Flexbox</a></li>
+            <li><a href="#menu3">Ejemplo de Diseño Responsive</a></li>
+        </ol>
+    </nav>
+
+    <h1>Flexbox</h1>
+    <p>Flexbox (Flexible Box Layout) es un sistema de diseño en CSS que permite distribuir
+    y alinear elementos dentro de un contenedor de manera eficiente,
+    incluso si el tamaño de los elementos es dinámico o desconocido.
+    Es muy útil para crear interfaces adaptables y alineaciones complejas de manera sencilla.</p>
+
+
+    <h3>Propiedades del contenedor flexible <b>(flex-container):</b></h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Propiedad</th>
+                <th>Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> <b> display: flex </b></td> 
+                <td>Activa el modelo de caja flexible en el contenedor.	</td>
+            </tr>
+            <tr>
+                <td><b>flex-direction</b></td>
+                <td>Establece la dirección de los elementos hijos <b>(row, row-reverse, column, column-reverse)</b>.</td>
+            </tr>
+            <tr>
+                <td><b>justify-content</b></td>
+                <td>Alinea los elementos a lo largo del eje principal. Por defecto <b>stretch</b></td>
+            </tr>
+            <tr>
+                <td><b>align-items</b></td>
+                <td>Alinea los elementos a lo largo del eje transversal.</td>
+            </tr>
+            <tr>
+                <td><b>flex-wrap</b></td>
+                <td>Permite que los elementos se envuelvan en líneas adicionales <b>(nowrap, wrap, wrap-reverse)</b>.</td>
+            </tr>
+            <tr>
+                <td><b>gap</b></td>
+                <td>Establece el espacio entre los elementos</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Propiedades de los elementos flexibles (flex-item):</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Propiedad</th>
+                <th>Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> <b> order</b></td> 
+                <td>Cambia el orden de los elementos flexibles.</td>
+            </tr>
+            <tr>
+                <td><b>flex-grow</b></td>
+                <td>Define cuánto puede crecer un elemento en relación con los demás.</td>
+            </tr>
+            <tr>
+                <td><b>flex-shrink</b></td>
+                <td>Define cuánto puede encogerse un elemento si el espacio es limitado.</td>
+            </tr>
+            <tr>
+                <td><b>flex-basis</b></td>
+                <td>Establece el tamaño base inicial del elemento antes de aplicar flex-grow o flex-shrink.</td>
+            </tr>
+            <tr>
+                <td><b>align-self</b></td>
+                <td>Alinea un elemento individualmente a lo largo del eje transversal.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <article>
+        <h2>Ejemplos flex-direction</h2>
+        <h3>flex-direction: row</h3>
+        <nav>
+            <ol class="flex-direction-row">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+            </ol>
+        </nav>
+
+        <h3>flex-direction: row-reverse</h3>
+        <nav>
+            <ol class="flex-direction-row-reverse">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+            </ol>
+        </nav>
+        
+        <h3>flex-direction: column</h3>
+        <nav>
+            <ol class="flex-direction-column">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+            </ol>
+        </nav>
+
+        <h3>flex-direction: column-reverse</h3>
+        <nav>
+            <ol class="flex-direction-column-reverse">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+            </ol>
+        </nav>
+    </article>
+
+    <article>
+        <h2>Ejemplos justify-content</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Valor</th>
+                    <th>Propiedad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> <b>flex-start</b></td> 
+                    <td>Los elementos se alinean al inicio del contenedor (por defecto).</td>
+                </tr>
+                <tr>
+                    <td><b>flex-end</b></td>
+                    <td>Los elementos se alinean al final del contenedor.</td>
+                </tr>
+                <tr>
+                    <td><b>center</b></td>
+                    <td>Los elementos se alinean en el centro del contenedor.</td>
+                </tr>
+                <tr>
+                    <td><b>space-between</b></td>
+                    <td>Los elementos se distribuyen con espacio igual entre ellos, dejando los bordes vacíos.</td>
+                </tr>
+                <tr>
+                    <td><b>space-around</b></td>
+                    <td>Los elementos se distribuyen con espacio igual alrededor de cada uno.</td>
+                </tr>
+                <tr>
+                    <td><b>space-evenly</b></td>
+                    <td>Los elementos se distribuyen con espacio completamente equitativo entre ellos y los bordes.</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="img-container">
+            <img src="./imagenes/justify-content-row.png" alt="Justify-Content-Row">
+        </div>
+        <div class="img-container">
+            <img src="./imagenes/justify-content-column.png" alt="Justify-Content-Column">
+        </div>
+
+        <h3>justify-content: flex-end</h3>
+        <nav>
+            <ol class="flex-direction-row-flex-end">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+            </ol>
+        </nav>
+
+        <h3>justify-content: center</h3>
+        <nav>
+            <ol class="flex-direction-row-center">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+            </ol>
+        </nav>
+
+        <h3>justify-content: space-between</h3>
+        <nav>
+            <ol class="flex-direction-row-space-between">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+            </ol>
+        </nav>
+
+        <h3>justify-content: space-around</h3>
+        <nav>
+            <ol class="flex-direction-row-space-around">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+            </ol>
+        </nav>
+
+        <h3>justify-content: space-evenly</h3>
+        <nav>
+            <ol class="flex-direction-row-space-evenly">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+            </ol>
+        </nav>
+    </article>
+
+    <article>
+        <h2>Ejemplos align-items</h2>
+        <p>Alinea los elementos a lo largo del eje transversal.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Valor</th>
+                    <th>Propiedad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> <b>flex-start</b></td> 
+                    <td>Los elementos se alinean al inicio del contenedor (por defecto, arriba si flex-direction es row).</td>
+                </tr>
+                <tr>
+                    <td><b>flex-end</b></td>
+                    <td>Los elementos se alinean al final del contenedor (abajo si flex-direction es row).</td>
+                </tr>
+                <tr>
+                    <td><b>center</b></td>
+                    <td>Los elementos se alinean al centro del contenedor.</td>
+                </tr>
+                <tr>
+                    <td><b>baseline</b></td>
+                    <td>Los elementos se alinean según su línea base. Esto es útil para alinear texto y otros elementos que pueden variar en altura.</td>
+                </tr>
+                <tr>
+                    <td><b>stretch</b></td>
+                    <td>Los elementos se estiran para llenar el contenedor. (Valor por defecto si las alturas no están definidas).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="img-container">
+            <img src="./imagenes/align-items-row.png" alt="Align-Items-Row">
+        </div>
+
+        <h3>align-items: flex-start</h3>
+        <nav>
+            <ol class="flex-direction-row-align-items-start">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+            </ol>
+        </nav>
+
+        <h3>align-items: flex-end</h3>
+        <nav>
+            <ol class="flex-direction-row-align-items-end">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+            </ol>
+        </nav>
+
+        <h3>align-items: center</h3>
+        <nav>
+            <ol class="flex-direction-row-align-items-center">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+            </ol>
+        </nav>
+
+        <h3>align-items: baseline</h3>
+        <nav>
+            <ol class="flex-direction-row-align-items-baseline">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+            </ol>
+        </nav>
+    </article>
+
+    <article>
+        <h2>Ejemplos align-content</h2>
+        <p>La propiedad align-content en CSS se usa para alinear las filas
+        dentro de un contenedor Flexbox cuando hay espacio extra en el eje
+        transversal (el eje perpendicular al eje principal). Esta propiedad
+        solo afecta cuando el contenedor tiene varias líneas de elementos,
+        es decir, cuando el contenido se envuelve debido a que no cabe en una sola línea.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Valor</th>
+                    <th>Propiedad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> <b>flex-start</b></td> 
+                    <td>Las líneas de elementos se alinean al inicio del contenedor.</td>
+                </tr>
+                <tr>
+                    <td><b>flex-end</b></td>
+                    <td>Las líneas de elementos se alinean al final del contenedor.</td>
+                </tr>
+                <tr>
+                    <td><b>center</b></td>
+                    <td>Las líneas de elementos se alinean al centro del contenedor.</td>
+                </tr>
+                <tr>
+                    <td><b>space-between</b></td>
+                    <td>Las líneas de elementos se distribuyen con espacio igual entre ellas, dejando los bordes vacíos.</td>
+                </tr>
+                <tr>
+                    <td><b>space-around</b></td>
+                    <td>Las líneas de elementos se distribuyen con espacio igual alrededor de cada fila.</td>
+                </tr>
+                <tr>
+                    <td><b>stretch</b></td>
+                    <td>Las líneas de elementos se estiran para llenar todo el espacio disponible del contenedor. (Este es el valor por defecto)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="img-container">
+            <img src="./imagenes/align-content-row.png" alt="Align-Content-Column">
+        </div>
+
+        <h3>align-content: flex-start</h3>
+        <nav>
+            <ol class="flex-direction-row-align-content-start">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+                <li><a href="#menu3">Menú 4</a></li>
+                <li><a href="#menu3">Menú 5</a></li>
+                <li><a href="#menu3">Menú 6</a></li>
+                <li><a href="#menu3">Menú 7</a></li>
+                <li><a href="#menu3">Menú 8</a></li>
+                <li><a href="#menu3">Menú 9</a></li>
+                <li><a href="#menu3">Menú 10</a></li>
+                <li><a href="#menu3">Menú 11</a></li>
+            </ol>
+        </nav>
+
+        <h3>align-content: space-around</h3>
+        <nav>
+            <ol class="flex-direction-row-align-content-space-around">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+                <li><a href="#menu3">Menú 4</a></li>
+                <li><a href="#menu3">Menú 5</a></li>
+                <li><a href="#menu3">Menú 6</a></li>
+                <li><a href="#menu3">Menú 7</a></li>
+                <li><a href="#menu3">Menú 8</a></li>
+                <li><a href="#menu3">Menú 9</a></li>
+                <li><a href="#menu3">Menú 10</a></li>
+                <li><a href="#menu3">Menú 11</a></li>
+            </ol>
+        </nav>
+    </article>
+
+    <article>
+        <h3>Uso de flex-grow en los hijos</h3>
+        <nav>
+            <ol class="flex-direction-row-equitativo">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+            </ol>
+        </nav>
+
+        <h3>Uso de flex-grow con un solo hijo</h3>
+        <nav>
+            <ol class="flex-direction-row-dos">
+                <li><a href="#menu1">Menú 1</a></li>
+                <li><a href="#menu2">Menú 2</a></li>
+                <li><a href="#menu3">Menú 3</a></li>
+            </ol>
+        </nav>
+
+    </article>
+    
+</body>
+</html>
