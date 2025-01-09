@@ -20,7 +20,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url(./assets/portada-libro.jpg);
+    background-image: url('./assets/portada-libro.jpg');
     background-size: cover;
     transform-origin: 0;
     border-radius: 10px;
