@@ -1,0 +1,37 @@
+.book {
+    position: relative;
+    width: 300px;
+    height: 450px;
+    border-radius: 10px;
+    background-color: #effffe;
+    box-shadow:  1px 4px 12px #000;
+    transform: preserve-3d;
+    perspective: 2000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-align: center;
+}
+
+
+.cover {
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(./assets/portada-libro.jpg);
+    background-size: cover;
+    transform-origin: 0;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transition: all 0.5s;
+}
+
+.book:hover .cover {
+    transition: all 0.5s;
+    transform: rotateY(-80deg);
+}
