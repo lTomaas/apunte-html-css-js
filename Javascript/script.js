@@ -25,7 +25,7 @@ function calculateBooksPerPage() {
   const galleryWidth = document.getElementById("gallery-container").offsetWidth;
   const bookWidth = 150 + 15; // Ancho mínimo del libro + gap
   const booksPerRow = Math.floor(galleryWidth / bookWidth);
-  booksPerPage = booksPerRow * 3; // 3 filas visibles por página (puedes ajustarlo)
+  booksPerPage = booksPerRow * 5; // 3 filas visibles por página (puedes ajustarlo)
 }
 
 // Función para renderizar los libros
