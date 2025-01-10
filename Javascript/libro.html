@@ -20,66 +20,13 @@
     </header>
 
     <section class="gallery">
-        <div class="book">
-            <div class="cover"></div>
-            <div class="content">
-                <span>
-                    RATING
-                </span>
-                <span class="rating">
-                    <img src="./assets/icono-estrella-vacia.png" alt="Rating">
-                    <img src="./assets/icono-estrella-vacia.png" alt="Rating">
-                    <img src="./assets/icono-estrella-vacia.png" alt="Rating">
-                    <img src="./assets/icono-estrella-vacia.png" alt="Rating">
-                    <img src="./assets/icono-estrella-vacia.png" alt="Rating">
-                </span>
-                <button>
-                    Ver reseñas
-                </button>
-            </div>
-        </div>       
-        
-        <div class="book">
-            <div class="cover"></div>
-            <div class="content">
-            </div>
+        <div class="buttons">
+            <button class="nav-button nav-left" id="prevPage" disabled onclick="changePage(-1)">&#10094;</button>
+            <button class="nav-button nav-right" id="nextPage" onclick="changePage(1)">&#10095;</button>
+        </div> 
+        <div id="gallery-container" class="gallery-container">
+            <!-- Aquí se cargarán los libros dinámicamente -->
         </div>
-        <div class="book">
-            <div class="cover"></div>
-            <div class="content">
-            </div>
-        </div>
-        <div class="book">
-            <div class="cover"></div>
-            <div class="content">
-            </div>
-        </div>
-        <div class="book">
-            <div class="cover"></div>
-            <div class="content">
-            </div>
-        </div>
-        <div class="book">
-            <div class="cover"></div>
-            <div class="content">
-            </div>
-        </div>
-        <div class="book">
-            <div class="cover"></div>
-            <div class="content">
-            </div>
-        </div>
-        <div class="book">
-            <div class="cover"></div>
-            <div class="content">
-            </div>
-        </div>
-        <div class="book">
-            <div class="cover"></div>
-            <div class="content">
-            </div>
-        </div>
-        
     </section>
 
     
@@ -93,4 +40,5 @@
         </span>
     </footer>
 </body>
+<script src="script.js"></script>
 </html>
