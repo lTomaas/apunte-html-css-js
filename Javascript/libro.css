@@ -121,23 +121,24 @@ header .nav-list li {
     display: flex;
     flex-direction: column;
     background-color: #333;
-
+    
     background-image: url("./assets/fondo-biblioteca.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    height: 100vh;
+    min-height: 100vh;
 }
 
-.gallery-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    background-color: transparent;
-    justify-content: center;
+
+.gallery-container{
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(150px,1fr)
+    );
+    gap: 15px;
     padding: 0px 15px;
-    height: 100%;
 }
 
 
@@ -192,58 +193,6 @@ footer .derechos {
 
 
 
-
-@media (max-width: 768px) {
-    .gallery {
-        /*max-height: calc(3 * 220px + 20px); /* Ajusta la altura para pantallas pequeñas */
-        height: 100%
-    }
-    
-    .book {
-        width: 120px; /* Ajusta el tamaño de los libros */
-        height: 180px;
-    }
-
-}
-
-
-/* Media query para pantallas más grandes */
-@media (min-width: 1024px) {
-    .gallery {
-        /*max-height: calc(3 * 300px + 20px); /* Ajusta la altura para pantallas grandes */
-        height: 100%
-    }
-    
-    .book {
-        width: 170px; /* Ajusta el tamaño de los libros */
-        height: 250px;
-    }
-}
-
-@media (min-width: 1440px) {
-    .gallery {
-        /*max-height: calc(3 * 300px + 20px); /* Ajusta la altura para pantallas grandes */
-        height: 100%
-    }
-    
-    .book {
-        width: 220px; /* Ajusta el tamaño de los libros */
-        height: 320px;
-    }
-}
-
-@media (min-width: 2560px) {
-    .gallery {
-        /*max-height: calc(3 * 450px + 20px); /* Ajusta la altura para pantallas grandes 4K */
-        height: 100%
-    }
-
-
-    .book {
-        width: 300px; /* Ajusta el tamaño de los libros para pantallas grandes */
-        height: 500px;
-    }
-}
 
 
 .buttons {
