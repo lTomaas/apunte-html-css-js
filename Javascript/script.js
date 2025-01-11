@@ -1,3 +1,10 @@
+const explorarButton = document.getElementById("explorarGenerosButton");
+const dropdownGeneros = document.getElementById("dropdownGeneros");
+const closeDropdownButton = document.getElementById("closeDropdown");
+const generosList = document.getElementById("generosList");
+const selectedGenre = document.getElementById("selectedGenre");
+const botonTexto = document.getElementById('botonTexto');
+
 const covers = [
   "./assets/portada-libro.jpg",
   "./assets/portada-libro2.jpg",
@@ -9,8 +16,52 @@ const covers = [
 let currentPage = 1;
 let booksPerPage = 12;
 let totalBooks = 0;
+let selectedGenreValue = "";  // Variable para almacenar el género seleccionado
 
-// Función para calcular el número de libros por página según el ancho del contenedor
+// Mostrar el dropdown de géneros
+explorarButton.addEventListener("click", () => {
+  dropdownGeneros.style.display = "block";
+  dropdownGeneros.classList.add("tracking-in-contract");
+});
+
+// Cerrar el dropdown de géneros
+closeDropdownButton.addEventListener("click", () => {
+  dropdownGeneros.style.display = "none";
+});
+
+// Seleccionar un género y actualizar el botón
+generosList.addEventListener("click", (event) => {
+  if (event.target.tagName === "LI") {
+    const generoSeleccionado = event.target.getAttribute("data-genero");
+
+    console.log("Género seleccionado:", generoSeleccionado);
+    botonTexto.textContent = generoSeleccionado;
+    selectedGenreValue = generoSeleccionado;
+
+    if(generoSeleccionado == "Todos los generos"){
+      selectedGenreValue = ""
+    }
+
+    console.log(selectedGenreValue)
+
+    explorarButton.classList.add('rotate-scale-up-horizontal');
+    setTimeout(() => {
+      explorarButton.classList.remove('rotate-scale-up-horizontal');
+    }, 400);
+
+    dropdownGeneros.style.display = "none";
+    renderBooks();  // Volver a renderizar los libros con el género seleccionado
+  }
+});
+
+// Cerrar el dropdown cuando se hace clic fuera
+dropdownGeneros.addEventListener("click", (event) => {
+  if (event.target === dropdownGeneros) {
+    dropdownGeneros.style.display = "none";
+  }
+});
+
+// Calcular cuántos libros caben por página
 function calculateBooksPerPage() {
   const galleryWidth = document.getElementById("gallery-container").offsetWidth;
   const bookWidth = 150 + 15; // Ancho del libro más el gap entre libros
@@ -33,32 +84,36 @@ async function renderBooks() {
   // Obtener libros de la API para la página actual
   const booksToDisplay = await fetchBooks(currentPage - 1, booksPerPage);
 
-  booksToDisplay.forEach((book, index) => {
-    const bookDiv = document.createElement("div");
-    bookDiv.classList.add("book");
+  if (Array.isArray(booksToDisplay)) {
+    booksToDisplay.forEach((book, index) => {
+      const bookDiv = document.createElement("div");
+      bookDiv.classList.add("book");
 
-    let starsHTML = "";
-    for (let i = 1; i <= 5; i++) {
-      if (i <= book.rating) {
-        starsHTML += `<img src="./assets/icono-estrella.png" alt="Estrella llena">`;
-      } else {
-        starsHTML += `<img src="./assets/icono-estrella-vacia.png" alt="Estrella vacía">`;
+      let starsHTML = "";
+      for (let i = 1; i <= 5; i++) {
+        if (i <= book.rating) {
+          starsHTML += `<img src="./assets/icono-estrella.png" alt="Estrella llena">`;
+        } else {
+          starsHTML += `<img src="./assets/icono-estrella-vacia.png" alt="Estrella vacía">`;
+        }
       }
-    }
 
-    // Usar imagen del backend o una portada predeterminada
-    const coverImage = covers[index % covers.length];
+      // Usar imagen del backend o una portada predeterminada
+      const coverImage = covers[index % covers.length];
 
-    bookDiv.innerHTML = `
-      <div class="cover" style="background-image: url('${coverImage}')"></div>
-      <div class="content">
-        <p>RATING</p>
-        <span class="rating">${starsHTML}</span>
-        <button>Ver reseñas</button>
-      </div>
-    `;
-    galleryContainer.appendChild(bookDiv);
-  });
+      bookDiv.innerHTML = `
+        <div class="cover" style="background-image: url('${coverImage}')"></div>
+        <div class="content">
+          <p>RATING</p>
+          <span class="rating">${starsHTML}</span>
+          <button>Ver reseñas</button>
+        </div>
+      `;
+      galleryContainer.appendChild(bookDiv);
+    });
+  } else {
+    console.error("No se obtuvieron libros válidos o no es un arreglo.");
+  }
 
   updatePagination();
 }
@@ -66,15 +121,22 @@ async function renderBooks() {
 // Función para obtener los libros de la API
 async function fetchBooks(page, size) {
   try {
-    const response = await fetch(`http://localhost:8080/api/book/all?page=${page}&size=${size}`);
+    const response = await fetch(`http://localhost:8080/api/book/by-genre?genre=${selectedGenreValue}&page=${page}&size=${size}`);
     const data = await response.json();
-    totalBooks = data.totalElements;
-    return data.content;
+    
+    if (data && Array.isArray(data.content)) {
+      totalBooks = data.totalElements;
+      return data.content;
+    } else {
+      console.error("La respuesta de la API no tiene el formato esperado:", data);
+      return [];
+    }
   } catch (error) {
     console.error("Error al obtener los libros:", error);
     return [];
   }
 }
+
 
 // Función para actualizar la paginación
 function updatePagination() {
