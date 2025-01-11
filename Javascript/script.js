@@ -1,4 +1,3 @@
-const numBooks = 1000; // Número de libros a generar
 const covers = [
   "./assets/portada-libro.jpg",
   "./assets/portada-libro2.jpg",
@@ -7,44 +6,34 @@ const covers = [
   "./assets/portada-libro5.jpg"
 ];
 
-const books = [];
-
-for (let i = 0; i < numBooks; i++) {
-  books.push({
-    title: `Libro ${i + 1}`,
-    rating: Math.floor(Math.random() * 5) + 1, // Rating aleatorio entre 1 y 5
-    cover: covers[i % covers.length] // Portadas de forma cíclica
-  });
-}
-
 let currentPage = 1;
-let booksPerPage = 0;
+let booksPerPage = 12;
+let totalBooks = 0;
 
-// Función para calcular el número de libros por página
+// Función para calcular el número de libros por página según el ancho del contenedor
 function calculateBooksPerPage() {
   const galleryWidth = document.getElementById("gallery-container").offsetWidth;
-  const bookWidth = 150 + 15; // Ancho mínimo del libro + gap
+  const bookWidth = 150 + 15; // Ancho del libro más el gap entre libros
   const booksPerRow = Math.floor(galleryWidth / bookWidth);
-  booksPerPage = booksPerRow * 8; // 3 filas visibles por página
+  booksPerPage = booksPerRow * 3; // 3 filas visibles por página
 }
 
 // Función para renderizar los libros
-function renderBooks() {
+async function renderBooks() {
   calculateBooksPerPage();
-  const totalPages = Math.ceil(books.length / booksPerPage);
+  const totalPages = Math.ceil(totalBooks / booksPerPage);
 
-  if (currentPage > totalPages) {
+  if (currentPage > totalPages && totalPages > 0) {
     currentPage = totalPages;
   }
 
   const galleryContainer = document.getElementById("gallery-container");
   galleryContainer.innerHTML = ""; // Limpiar la galería
 
-  const startIndex = (currentPage - 1) * booksPerPage;
-  const endIndex = startIndex + booksPerPage;
-  const booksToDisplay = books.slice(startIndex, endIndex);
+  // Obtener libros de la API para la página actual
+  const booksToDisplay = await fetchBooks(currentPage - 1, booksPerPage);
 
-  booksToDisplay.forEach((book) => {
+  booksToDisplay.forEach((book, index) => {
     const bookDiv = document.createElement("div");
     bookDiv.classList.add("book");
 
@@ -57,10 +46,12 @@ function renderBooks() {
       }
     }
 
+    // Usar imagen del backend o una portada predeterminada
+    const coverImage = covers[index % covers.length];
+
     bookDiv.innerHTML = `
-      <div class="cover" style="background-image: url('${book.cover}')"></div>
+      <div class="cover" style="background-image: url('${coverImage}')"></div>
       <div class="content">
-        <p>${book.title}</p>
         <p>RATING</p>
         <span class="rating">${starsHTML}</span>
         <button>Ver reseñas</button>
@@ -72,13 +63,26 @@ function renderBooks() {
   updatePagination();
 }
 
+// Función para obtener los libros de la API
+async function fetchBooks(page, size) {
+  try {
+    const response = await fetch(`http://localhost:8080/api/book/all?page=${page}&size=${size}`);
+    const data = await response.json();
+    totalBooks = data.totalElements;
+    return data.content;
+  } catch (error) {
+    console.error("Error al obtener los libros:", error);
+    return [];
+  }
+}
+
 // Función para actualizar la paginación
 function updatePagination() {
-  const totalPages = Math.ceil(books.length / booksPerPage);
+  const totalPages = Math.ceil(totalBooks / booksPerPage);
   const paginationNumbers = document.getElementById("pagination-numbers");
   paginationNumbers.innerHTML = "";
 
-  const maxVisibleButtons = 5; // Número máximo de botones visibles
+  const maxVisibleButtons = 5;
   let startPage = Math.max(currentPage - Math.floor(maxVisibleButtons / 2), 1);
   let endPage = Math.min(startPage + maxVisibleButtons - 1, totalPages);
 
@@ -86,7 +90,6 @@ function updatePagination() {
     startPage = Math.max(endPage - maxVisibleButtons + 1, 1);
   }
 
-  // Botón para la primera página si no está en el rango visible
   if (startPage > 1) {
     createPageButton(1);
     if (startPage > 2) {
@@ -94,19 +97,16 @@ function updatePagination() {
     }
   }
 
-  // Crear botones del rango visible
   for (let i = startPage; i <= endPage; i++) {
     createPageButton(i);
   }
 
-  // Botón para la última página si no está en el rango visible
   if (endPage < totalPages) {
     if (endPage < totalPages - 1) {
       createEllipsis();
     }
     createPageButton(totalPages);
   }
-
 }
 
 // Función para crear un botón de página
@@ -137,7 +137,7 @@ function goToPage(page) {
 
 // Función para cambiar de página en una dirección
 function changePage(direction) {
-  const totalPages = Math.ceil(books.length / booksPerPage);
+  const totalPages = Math.ceil(totalBooks / booksPerPage);
   currentPage += direction;
   if (currentPage < 1) currentPage = 1;
   else if (currentPage > totalPages) currentPage = totalPages;
