@@ -15,22 +15,46 @@
             <ol class="nav-list">
                 <li>
                     <div class="nav-buscador">
-                        <span class=""><img src="./assets/icono-busqueda.png" alt="Icono busqueda"></span>
-                        <input class="search-bar" type="search" placeholder="Buscar titulo">
+                        <span><img src="./assets/icono-busqueda.png" alt="Icono busqueda"></span>
+                        <input class="search-bar" type="search" placeholder="Buscar título">
                     </div>
                 </li>
-                <li style="margin: 0px 10px;">Explorar generos</li>
+                <li>
+                    <button id="explorarGenerosButton" class="explorar-button">
+                        <img src="./assets/icono-genero.png" alt="Ícono genero" class="icono-genero">
+                        <span id="botonTexto">Todos los generos</span>
+                        <img src="./assets/icono-genero.png" alt="Ícono genero" class="icono-genero">
+                    </button>
+                </li>
             </ol>
         </nav>
     </header>
 
+    <div id="dropdownGeneros" class="dropdown-generos">
+        <span class="close-dropdown" id="closeDropdown">&times;</span>
+        <ul id="generosList">
+            <li data-genero="Aventura">Aventura</li>
+            <li data-genero="Romance">Romance</li>
+            <li data-genero="Misterio">Misterio</li>
+            <li data-genero="Fantasía">Fantasía</li>
+            <li data-genero="Drama">Drama</li>
+            <li data-genero="Ciencia ficción">Ciencia ficción</li>
+            <li data-genero="Terror">Terror</li>
+            <li data-genero="Comedia">Comedia</li>
+            <li data-genero="Todos los generos">Todos los generos</li>
+            <!-- Puedes agregar más géneros si lo deseas -->
+        </ul>
+    </div>
+
     <section class="gallery">
-        <div class="buttons">
-            <button class="nav-button nav-left" id="prevPage" disabled onclick="changePage(-1)">&#10094;</button>
-            <button class="nav-button nav-right" id="nextPage" onclick="changePage(1)">&#10095;</button>
-        </div> 
+        
         <div id="gallery-container" class="gallery-container">
             <!-- Aquí se cargarán los libros dinámicamente -->
+        </div>
+        <div class="buttons">
+            
+            <div id="pagination-numbers" class="pagination-numbers"></div>
+            
         </div>
     </section>
 
@@ -46,4 +70,5 @@
     </footer>
 </body>
 <script src="script.js"></script>
+<script src="explore-genre.js"></script>
 </html>

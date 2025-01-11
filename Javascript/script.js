@@ -1,4 +1,4 @@
-const numBooks = 30; // Número de libros a generar
+const numBooks = 1000; // Número de libros a generar
 const covers = [
   "./assets/portada-libro.jpg",
   "./assets/portada-libro2.jpg",
@@ -25,12 +25,18 @@ function calculateBooksPerPage() {
   const galleryWidth = document.getElementById("gallery-container").offsetWidth;
   const bookWidth = 150 + 15; // Ancho mínimo del libro + gap
   const booksPerRow = Math.floor(galleryWidth / bookWidth);
-  booksPerPage = booksPerRow * 5; // 3 filas visibles por página (puedes ajustarlo)
+  booksPerPage = booksPerRow * 8; // 3 filas visibles por página
 }
 
 // Función para renderizar los libros
 function renderBooks() {
   calculateBooksPerPage();
+  const totalPages = Math.ceil(books.length / booksPerPage);
+
+  if (currentPage > totalPages) {
+    currentPage = totalPages;
+  }
+
   const galleryContainer = document.getElementById("gallery-container");
   galleryContainer.innerHTML = ""; // Limpiar la galería
 
@@ -69,11 +75,67 @@ function renderBooks() {
 // Función para actualizar la paginación
 function updatePagination() {
   const totalPages = Math.ceil(books.length / booksPerPage);
-  document.getElementById("prevPage").disabled = currentPage === 1;
-  document.getElementById("nextPage").disabled = currentPage === totalPages;
+  const paginationNumbers = document.getElementById("pagination-numbers");
+  paginationNumbers.innerHTML = "";
+
+  const maxVisibleButtons = 5; // Número máximo de botones visibles
+  let startPage = Math.max(currentPage - Math.floor(maxVisibleButtons / 2), 1);
+  let endPage = Math.min(startPage + maxVisibleButtons - 1, totalPages);
+
+  if (endPage - startPage + 1 < maxVisibleButtons) {
+    startPage = Math.max(endPage - maxVisibleButtons + 1, 1);
+  }
+
+  // Botón para la primera página si no está en el rango visible
+  if (startPage > 1) {
+    createPageButton(1);
+    if (startPage > 2) {
+      createEllipsis();
+    }
+  }
+
+  // Crear botones del rango visible
+  for (let i = startPage; i <= endPage; i++) {
+    createPageButton(i);
+  }
+
+  // Botón para la última página si no está en el rango visible
+  if (endPage < totalPages) {
+    if (endPage < totalPages - 1) {
+      createEllipsis();
+    }
+    createPageButton(totalPages);
+  }
+
+}
+
+// Función para crear un botón de página
+function createPageButton(page) {
+  const button = document.createElement("button");
+  button.classList.add("page-button");
+  button.textContent = page;
+  button.onclick = () => goToPage(page);
+  if (page === currentPage) {
+    button.classList.add("active");
+  }
+  document.getElementById("pagination-numbers").appendChild(button);
+}
+
+// Función para crear puntos suspensivos (...)
+function createEllipsis() {
+  const ellipsis = document.createElement("span");
+  ellipsis.classList.add("ellipsis");
+  ellipsis.textContent = "...";
+  document.getElementById("pagination-numbers").appendChild(ellipsis);
 }
 
 // Función para cambiar de página
+function goToPage(page) {
+  currentPage = page;
+  renderBooks();
+}
+
+// Función para cambiar de página en una dirección
 function changePage(direction) {
   const totalPages = Math.ceil(books.length / booksPerPage);
   currentPage += direction;
