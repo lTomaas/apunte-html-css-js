@@ -82,53 +82,84 @@ async function renderBooks() {
   const galleryContainer = document.getElementById("gallery-container");
   galleryContainer.innerHTML = ""; // Limpiar la galería
 
-  // Obtener libros de la API para la página actual
-  const booksToDisplay = await fetchBooks(currentPage - 1, booksPerPage);
+  try {
+    // Obtener libros de la API para la página actual
+    const booksToDisplay = await fetchBooks(currentPage - 1, booksPerPage);
 
-  if (Array.isArray(booksToDisplay)) {
-    booksToDisplay.forEach((book, index) => {
-      const bookDiv = document.createElement("div");
-      bookDiv.classList.add("book");
-
-      let starsHTML = "";
-      for (let i = 1; i <= 5; i++) {
-        if (i <= book.rating) {
-          starsHTML += `<img src="./assets/icono-estrella.png" alt="Estrella llena">`;
-        } else {
-          starsHTML += `<img src="./assets/icono-estrella-vacia.png" alt="Estrella vacía">`;
-        }
-      }
-
-      // Usar imagen del backend o una portada predeterminada
-      const coverImage = covers[index % covers.length];
-
-      bookDiv.innerHTML = `
-        <div class="cover" style="background-image: url('${coverImage}')"></div>
-        <div class="content">
-          <p>RATING</p>
-          <span class="rating">${starsHTML}</span>
-          <button class="review-btn" data-title="${book.title}">Ver reseñas</button>
-        </div>
-      `;
-      galleryContainer.appendChild(bookDiv);
+    if (Array.isArray(booksToDisplay) && booksToDisplay.length > 0) {
+      booksToDisplay.forEach((book, index) => {
+        const bookDiv = document.createElement("div");
+        bookDiv.classList.add("book");
 
 
-      const reviewButtons = document.querySelectorAll(".review-btn");
-      reviewButtons.forEach(button => {
-        button.addEventListener("click", function() {
-          const bookTitle = button.getAttribute("data-title");
-          console.log("Título del libro seleccionado para reseña:", bookTitle);
-          // Aquí puedes hacer lo que necesites con el título del libro, por ejemplo, abrir una ventana modal o redirigir
-        });
+        // Generar HTML de estrellas
+        const starsHTML = generateStarsHTML(book.votes);
+        
+        // Usar imagen del backend o una portada predeterminada
+        const coverImage = covers[index % covers.length];
+
+        bookDiv.innerHTML = `
+          <div class="cover" style="background-image: url('${coverImage}')"></div>
+          <div class="content">
+            <p>RATING</p>
+            <span class="rating">${starsHTML}</span>
+            <button class="review-btn" data-title="${book.title}">Ver reseñas</button>
+          </div>
+        `;
+        galleryContainer.appendChild(bookDiv);
       });
 
-    });
-    
-  } else {
-    console.error("No se obtuvieron libros válidos o no es un arreglo.");
+      // Añadir eventos a los botones de reseñas
+      addReviewButtonListeners();
+    } else {
+      console.error("No se obtuvieron libros válidos o la respuesta no es un arreglo.");
+    }
+  } catch (error) {
+    console.error("Error al obtener los libros:", error);
   }
 
   updatePagination();
+}
+
+// Función para generar estrellas según el promedio de votos
+function generateStarsHTML(votes) {
+  let starsHTML = "";
+
+  let averageRating = 0;
+  if (votes.length !== 0){
+    const totalRating = votes.reduce((acc, vote) => acc + vote.rating, 0);
+    averageRating = totalRating / votes.length;
+    console.log(totalRating);
+  }
+
+
+  const fullStars = Math.floor(averageRating); // Estrellas llenas
+  const halfStar = averageRating % 1 >= 0.5 ? 1 : 0; // Estrella a la mitad (si el resto es >= 0.5)
+  const emptyStars = 5 - fullStars - halfStar; // Estrellas vacías restantes
+
+  for (let i = 0; i < fullStars; i++) {
+    starsHTML += `<img src="./assets/icono-estrella.png" alt="Estrella llena">`;
+  }
+  if (halfStar) {
+    starsHTML += `<img src="./assets/icono-estrella-mitad.png" alt="Media estrella">`;
+  }
+  for (let i = 0; i < emptyStars; i++) {
+    starsHTML += `<img src="./assets/icono-estrella-vacia.png" alt="Estrella vacía">`;
+  }
+
+  return starsHTML;
+}
+
+// Función para añadir eventos a los botones de reseñas
+function addReviewButtonListeners() {
+  const reviewButtons = document.querySelectorAll(".review-btn");
+  reviewButtons.forEach(button => {
+    button.addEventListener("click", function () {
+      const bookTitle = button.getAttribute("data-title");
+      console.log("Título del libro seleccionado para reseña:", bookTitle);
+      // Aquí puedes hacer lo que necesites con el título del libro, por ejemplo, abrir una ventana modal o redirigir
+    });
+  });
 }
 
 // Función para obtener los libros de la API
