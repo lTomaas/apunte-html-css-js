@@ -50,15 +50,16 @@ generosList.addEventListener("click", (event) => {
     }, 400);
 
     dropdownGeneros.style.display = "none";
+    currentPage = 1;
     renderBooks();  // Volver a renderizar los libros con el género seleccionado
   }
 });
 
 // Cerrar el dropdown cuando se hace clic fuera
 dropdownGeneros.addEventListener("click", (event) => {
-  if (event.target === dropdownGeneros) {
+  
     dropdownGeneros.style.display = "none";
-  }
+  
 });
 
 // Calcular cuántos libros caben por página
@@ -106,11 +107,23 @@ async function renderBooks() {
         <div class="content">
           <p>RATING</p>
           <span class="rating">${starsHTML}</span>
-          <button>Ver reseñas</button>
+          <button class="review-btn" data-title="${book.title}">Ver reseñas</button>
         </div>
       `;
       galleryContainer.appendChild(bookDiv);
+
+
+      const reviewButtons = document.querySelectorAll(".review-btn");
+      reviewButtons.forEach(button => {
+        button.addEventListener("click", function() {
+          const bookTitle = button.getAttribute("data-title");
+          console.log("Título del libro seleccionado para reseña:", bookTitle);
+          // Aquí puedes hacer lo que necesites con el título del libro, por ejemplo, abrir una ventana modal o redirigir
+        });
+      });
+
     });
+    
   } else {
     console.error("No se obtuvieron libros válidos o no es un arreglo.");
   }
@@ -121,7 +134,8 @@ async function renderBooks() {
 // Función para obtener los libros de la API
 async function fetchBooks(page, size) {
   try {
-    const response = await fetch(`http://localhost:8080/api/book/by-genre?genre=${selectedGenreValue}&page=${page}&size=${size}`);
+    const searchText = searchInput.value.trim();
+    const response = await fetch(`http://localhost:8080/api/book/by-genre?genre=${selectedGenreValue}&title=${searchText}&page=${page}&size=${size}`);
     const data = await response.json();
     
     if (data && Array.isArray(data.content)) {
@@ -206,7 +220,12 @@ function changePage(direction) {
   renderBooks();
 }
 
-// Recalcular y renderizar al cambiar el tamaño de la ventana
+searchInput.addEventListener("input", () => {
+  const searchText = searchInput.value.trim();
+  console.log("Texto de búsqueda:", searchText);
+  fetchBooks(0, booksPerPage, searchText).then(() => renderBooks());
+});
+
 window.addEventListener("resize", renderBooks);
 
 // Inicializar la galería
