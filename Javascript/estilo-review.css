@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding: 20px;
+    background-color: yellow;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    background-color: blue;
+    padding: 20px;
+}
+
+
+.principal {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.principal img {
+    height: 300px;
+    width: 200px;
+    border: 3px solid brown;
+    border-radius: 30px;
+}
+
+.informacion-principal {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 1;
+    width: 40vw;
+}
+
+
+.informacion-principal h1 {
+    text-align: center;
+}
+
+.informacion {
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.informacion-libro {
+    background-color: burlywood;
+    min-width: 200px;
+}
+
+.rating {
+    background-color: burlywood;
+}
+
+.seccion-comentarios {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.seccion-comentarios h1{
+    text-align: center;
+}
+
+.contenedor-comentarios {
+    background-color: aqua;
+    border-radius: 20px;
+    border: 2px solid black
+}
+
+.comentario {
+    margin: 20px;
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 20px;
+}
