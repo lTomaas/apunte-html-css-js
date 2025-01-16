@@ -71,7 +71,7 @@ main {
     flex-grow: 1;
     width: 40vw;
     user-select: text;
-    background-color: #333;
+    background-color: rgba(128, 128, 128, 0.5);
     border-radius: 30px;
     padding: 20px;
 }
@@ -90,16 +90,19 @@ main {
 }
 
 .informacion-libro {
-    background-color: burlywood;
+    background-color: rgba(128, 128, 128, 0.5);
+    padding: 10px;
+    border-radius: 20px;
 }
 
 .rating {
-    background-color: burlywood;
+    background-color: rgba(128, 128, 128, 0.5);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     flex-grow: 1;
+    border-radius: 20px;
 }
 
 .rating h1 {
@@ -127,9 +130,10 @@ main {
 }
 
 .contenedor-comentarios {
-    background-color: #333;
+    background-color: rgba(128, 128, 128, 0.5);
     border-radius: 20px;
-    border: 2px solid black
+    border: 2px solid black;
+    color: #000;
 }
 
 .comentario {
@@ -141,8 +145,67 @@ main {
     color: black;
 }
 
+.comentario strong{
+    color: black;
+    font-weight: bold;;
+    font-size: 20px;
+}
+
+.formulario-comentarios {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario-comentarios form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 10px;
+    padding: 20px;
+    background-color: rgba(128, 128, 128, 0.5);
+    border-radius: 20px;
+    border: 2px solid black;
+}
+
+.formulario-comentarios form button {
+    padding: 10px;
+    color: white;
+    background-color: black;
+    border-radius: 20px;
+    width: 50%;
+    align-self: center;
+}
 
 
+.input-comentario {
+    border-radius: 20px;
+    transition: transform ease 0.3s, box-shadow 0.3s;
+    border: solid 2px #333;
+    color: #000;
+    width: 50vw;
+    height: 20vh;
+    padding: 10px; /* Espaciado interno para el texto */
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+    resize: none; /* Opcional: evita que el usuario redimensione el textarea */
+    text-align: left; /* Alinea el texto a la izquierda */
+    overflow: auto; /* Asegura que el contenido desbordante sea manejado */
+}
+
+.input-comentario:focus-within {
+    transform: scale(1.1);
+    box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.75);
+}
+
+.contador-caracteres {
+    font-size: 14px;
+    color: white;
+    text-align: right;
+    margin-top: -10px; /* Ajusta la posición si es necesario */
+    margin-bottom: 10px;
+}
 
 
 

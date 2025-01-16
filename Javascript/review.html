@@ -6,19 +6,24 @@
     <title>Document</title>
     <link rel="stylesheet" href="estilo-review.css">
 </head>
-<body>
-    <header>
-        <div class="logo"><img src="./assets/logo2.png" alt="LOGO"></div>
-    </header>
+    <body>
+
+        <header>
+            <div class="logo"><img src="./assets/logo2.png" alt="LOGO"></div>
+        </header>
+
+    
+            
+
+         
+        
 
     <main>
         <section class="principal">
             <div class="imagen-libro">
-                <img src="https://i.pinimg.com/736x/76/6f/3d/766f3d034ffe6a13acfbe9394553c531--novel-cover-design-book-cover-designs.jpg" alt="Imagen libro">
+                <img alt="Imagen libro">
             </div>
             <div class="informacion-principal">
-                <h1>TITULO</h1>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, minus omnis esse facilis error asperiores voluptates, ratione dolorum molestiae in voluptatibus ducimus pariatur quod voluptatum quo quis inventore? Fuga aliquam adipisci modi reprehenderit unde nisi, nemo sequi distinctio, illum cumque aliquid iure commodi molestiae.</p>
             </div>
         </section>
         <section class="informacion">
@@ -43,19 +48,15 @@
         <section class="seccion-comentarios">
             <h1>COMENTARIOS</h1>
             <div class="contenedor-comentarios">
-                <div class="comentario">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa aut vero deserunt praesentium laudantium accusamus omnis dignissimos vel unde! Quis, ducimus ipsa debitis incidunt laboriosam nobis iste fugiat voluptatibus! Veniam corrupti sit sunt a, exercitationem minima esse? Iste architecto, eligendi neque vel eius vitae! Soluta tempora recusandae aspernatur molestiae. Quam?
-                </div>
-
-                <div class="comentario">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi corporis quos atque voluptatum eos deleniti sint? Magni earum nulla suscipit.
-                </div>
-                <div class="comentario">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi corporis quos atque voluptatum eos deleniti sint? Magni earum nulla suscipit.
-                </div>
-                <div class="comentario">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi corporis quos atque voluptatum eos deleniti sint? Magni earum nulla suscipit.
-                </div>
+                <!-- Comentarios generados dinámicamente -->
+            </div>
+            <div class="formulario-comentarios">
+                <h2>Deja tu comentario</h2>
+                <form>
+                    <textarea class="input-comentario" placeholder="Escribe tu comentario aquí..." maxlength="300" required></textarea>
+                    <span class="contador-caracteres">0/300 caracteres</span>
+                    <button type="button" class="enviarButton">Enviar</button>
+                </form>
             </div>
         </section>
     </main>
@@ -69,4 +70,6 @@
         </span>
     </footer>
 </body>
+<script src="script-review.js"></script>
+
 </html>
