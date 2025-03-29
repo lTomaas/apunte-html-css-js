@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilo-review.css">
+</head>
+    <body>
+
+        <header>
+            <div class="logo"><img src="./assets/logo2.png" alt="LOGO"></div>
+        </header>
+
+    
+            
+
+         
+        
+
+    <main>
+        <section class="principal">
+            <div class="imagen-libro">
+                <img alt="Imagen libro">
+            </div>
+            <div class="informacion-principal">
+            </div>
+        </section>
+        <section class="informacion">
+            <div class="informacion-libro">
+                Autor: Lorem ipsum dolor sit.<br>
+                Genero: Lorem, ipsum.<br>
+                Fecha de lanzamiento: 15/10/2015<br>
+                Editorial: Lorem, ipsum dolor.<br>
+            </div>
+            <div class="rating">
+                <h1>RATING</h1>
+                <div class="estrellas">
+                    <img src="./assets/icono-estrella-vacia.png" alt="Estrella vacía">
+                    <img src="./assets/icono-estrella-vacia.png" alt="Estrella vacía">
+                    <img src="./assets/icono-estrella-vacia.png" alt="Estrella vacía">
+                    <img src="./assets/icono-estrella-vacia.png" alt="Estrella vacía">
+                    <img src="./assets/icono-estrella-vacia.png" alt="Estrella vacía">
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion-comentarios">
+            <h1>COMENTARIOS</h1>
+            <div class="contenedor-comentarios">
+                <!-- Comentarios generados dinámicamente -->
+            </div>
+            <div class="formulario-comentarios">
+                <h2>Deja tu comentario</h2>
+                <form>
+                    <textarea class="input-comentario" placeholder="Escribe tu comentario aquí..." maxlength="300" required></textarea>
+                    <span class="contador-caracteres">0/300 caracteres</span>
+                    <button type="button" class="enviarButton">Enviar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p class="derechos">&copy; 2025 Guía Javascript. Todos los derechos reservados.</p>
+        <span class="contacto">
+            <span><a class="icono-contacto linkedin-icon" href="#linkedin"></a></span>
+            <span><a class="icono-contacto github-icon" href="#github"></a></span>
+            <span><a class="icono-contacto instagram-icon" href="#instagram"></a></span>
+        </span>
+    </footer>
+</body>
+<script src="script-review.js"></script>
+
+</html>

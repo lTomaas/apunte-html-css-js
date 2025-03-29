@@ -1,0 +1,272 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #f7e018, #ffe55c); /* Degradado amarillo */
+    padding: 5px 5px;
+    border-bottom: 2px solid #e6c300; /* Línea inferior para dar separación */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+header .logo {
+    border-radius: 10px; /* Bordes redondeados */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para efectos */
+    cursor: pointer;
+    align-self: flex-start;
+    align-content: center;
+    margin: 5px 5px;
+    user-select: none;
+}
+
+header .logo:hover {
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el cursor */
+}
+
+header .logo img {
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
+    box-shadow:  1px 4px 12px #000;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    background-color: blue;
+    padding: 20px;
+
+    background-image: url("./assets/fondo-biblioteca.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+.principal {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    user-select: none;
+}
+
+.imagen-libro img {
+    height: 300px;
+    width: 200px;
+    border: 3px solid brown;
+    border-radius: 30px;
+}
+
+.informacion-principal {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 1;
+    width: 40vw;
+    user-select: text;
+    background-color: rgba(128, 128, 128, 0.5);
+    border-radius: 30px;
+    padding: 20px;
+}
+
+
+.informacion-principal h1 {
+    text-align: center;
+}
+
+.informacion {
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.informacion-libro {
+    background-color: rgba(128, 128, 128, 0.5);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.rating {
+    background-color: rgba(128, 128, 128, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    flex-grow: 1;
+    border-radius: 20px;
+}
+
+.rating h1 {
+    text-align: center;
+}
+
+.estrellas {
+    text-align: center;
+}
+
+.estrellas img {
+    width: 40x;
+    height: 40px;
+}
+
+.seccion-comentarios {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.seccion-comentarios h1{
+    text-align: center;
+}
+
+.contenedor-comentarios {
+    background-color: rgba(128, 128, 128, 0.5);
+    border-radius: 20px;
+    border: 2px solid black;
+    color: #000;
+}
+
+.comentario {
+    margin: 20px;
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 20px;
+    color: black;
+
+    word-wrap: break-word; /* Permite que el texto largo se divida en varias líneas */
+    overflow-wrap: break-word; /* Asegura que las palabras largas también se ajusten */
+    max-width: 100%; /* Asegura que el contenedor no se desborde */
+}
+
+.comentario strong{
+    color: black;
+    font-weight: bold;;
+    font-size: 20px;
+}
+
+.formulario-comentarios {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario-comentarios form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 10px;
+    padding: 20px;
+    background-color: rgba(128, 128, 128, 0.5);
+    border-radius: 20px;
+    border: 2px solid black;
+}
+
+.formulario-comentarios form button {
+    padding: 10px;
+    color: white;
+    background-color: black;
+    border-radius: 20px;
+    width: 50%;
+    align-self: center;
+}
+
+
+.input-comentario {
+    border-radius: 20px;
+    transition: transform ease 0.3s, box-shadow 0.3s;
+    border: solid 2px #333;
+    color: #000;
+    width: 50vw;
+    height: 20vh;
+    padding: 10px; /* Espaciado interno para el texto */
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+    resize: none; /* Opcional: evita que el usuario redimensione el textarea */
+    text-align: left; /* Alinea el texto a la izquierda */
+    overflow: auto; /* Asegura que el contenido desbordante sea manejado */
+}
+
+.input-comentario:focus-within {
+    transform: scale(1.1);
+    box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.75);
+}
+
+.contador-caracteres {
+    font-size: 14px;
+    color: white;
+    text-align: right;
+    margin-top: -10px; /* Ajusta la posición si es necesario */
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #f7e018, #ffe55c); /* Degradado amarillo */
+    padding: 15px 20px;
+    border-bottom: 2px solid #e6c300; /* Línea inferior para dar separación */
+}
+
+footer .derechos {
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+
+.contacto {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;                          /* Espaciado entre los iconos */
+}
+
+.icono-contacto {
+    display: inline-block;
+    width: 40px;                /* Tamaño del icono */
+    height: 40px;               /* Tamaño del icono */
+    background-size: cover;     /* Ajuste de la imagen */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: transparent; /* Fondo transparente */
+    border-radius: 10px;
+}
+
+.icono-contacto:hover {
+    background-color: white;
+    transform: scale(1.3);               /* Agranda el icono al pasar el cursor */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Glow alrededor del icono */
+}
+
+.linkedin-icon {
+    background-image: url('./assets/icono-linkedin.png');  /* Icono LinkedIn */
+}
+
+.github-icon {
+    background-image: url('./assets/icono-github.png');    /* Icono GitHub */
+}
+
+.instagram-icon {
+    background-image: url('./assets/icono-instagram.png');/* Icono Instagram */
+}
+

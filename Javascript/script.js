@@ -90,6 +90,25 @@ async function renderBooks() {
       booksToDisplay.forEach((book, index) => {
         const bookDiv = document.createElement("div");
         bookDiv.classList.add("book");
+        bookDiv.setAttribute("data-id", book.id); // Asignar el ID del libro como data-id
+        bookDiv.setAttribute("data-title", book.title); // Asignar el ID del libro como data-id
+        bookDiv.setAttribute("data-description", book.description); // Asignar el ID del libro como data-id
+        bookDiv.setAttribute("data-genre", book.genres); // Asignar el ID del libro como data-id
+        bookDiv.setAttribute("data-release", book.publication_date); // Asignar el ID del libro como data-id
+        bookDiv.setAttribute("data-editorial", book.editorial);
+        bookDiv.setAttribute("data-author", book.author_name);
+
+        bookDiv.setAttribute("data-comments", JSON.stringify(book.comments.slice().reverse())); // Convertir el array a string JSON
+
+
+        let averageRating = 0;
+        if (book.votes.length !== 0){
+          const totalRating = book.votes.reduce((acc, vote) => acc + vote.rating, 0);
+          averageRating = totalRating / book.votes.length;
+        }
+
+        bookDiv.setAttribute("data-rating", averageRating);
+
 
 
         // Generar HTML de estrellas
@@ -98,19 +117,21 @@ async function renderBooks() {
         // Usar imagen del backend o una portada predeterminada
         const coverImage = covers[index % covers.length];
 
+        bookDiv.setAttribute("data-img", coverImage); // Asignar el ID del libro como data-id
+
+
         bookDiv.innerHTML = `
           <div class="cover" style="background-image: url('${coverImage}')"></div>
           <div class="content">
             <p>RATING</p>
             <span class="rating">${starsHTML}</span>
-            <button class="review-btn" data-title="${book.title}">Ver reseñas</button>
+            <button class="review-btn" onclick="verReseñas(event)">Ver reseñas</button>
           </div>
         `;
         galleryContainer.appendChild(bookDiv);
       });
 
       // Añadir eventos a los botones de reseñas
-      addReviewButtonListeners();
     } else {
       console.error("No se obtuvieron libros válidos o la respuesta no es un arreglo.");
     }
@@ -150,17 +171,42 @@ function generateStarsHTML(votes) {
   return starsHTML;
 }
 
-// Función para añadir eventos a los botones de reseñas
-function addReviewButtonListeners() {
-  const reviewButtons = document.querySelectorAll(".review-btn");
-  reviewButtons.forEach(button => {
-    button.addEventListener("click", function () {
-      const bookTitle = button.getAttribute("data-title");
-      console.log("Título del libro seleccionado para reseña:", bookTitle);
-      // Aquí puedes hacer lo que necesites con el título del libro, por ejemplo, abrir una ventana modal o redirigir
-    });
-  });
+function verReseñas(event) {
+  const bookElement = event.target.closest(".book");
+  const bookId = bookElement.getAttribute("data-id");
+  const bookTitle = bookElement.getAttribute("data-title");
+  const bookDescription = bookElement.getAttribute("data-description");
+  const bookImage = bookElement.getAttribute("data-img");
+  const bookGenre = bookElement.getAttribute("data-genre");
+  const bookDate = bookElement.getAttribute("data-release");
+  const bookRating = bookElement.getAttribute("data-rating");
+  const bookEditorial = bookElement.getAttribute("data-editorial");
+  const bookAuthor = bookElement.getAttribute("data-author");
+
+  const bookComments = JSON.parse(bookElement.getAttribute("data-comments")); 
+
+  
+  // Supongamos que tienes los datos del libro almacenados en un objeto
+  const bookData = {
+    id: bookId,
+    title: bookTitle,
+    description: bookDescription,
+    image: bookImage,
+    author: bookAuthor,
+    genre: bookGenre,
+    releaseDate: bookDate,
+    publisher: bookEditorial,
+    rating: bookRating,
+    comments: bookComments,
+  };
+
+  // Guarda los datos en localStorage
+  localStorage.setItem("selectedBook", JSON.stringify(bookData));
+
+  // Redirige a la página de reseñas
+  window.location.href = "review.html";
 }
+
 
 // Función para obtener los libros de la API
 async function fetchBooks(page, size) {
